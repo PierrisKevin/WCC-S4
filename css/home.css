@@ -57,5 +57,14 @@
 }
 
 #home .images{
+    position: relative;
     width : 50%;
+}
+#home .images .deco{
+    position: absolute;
+    width: 72vw;
+    height: 142vh;
+    border-radius: 100px;
+    background: var(--card-bg);
+    transform: rotate(45deg) translateY(10%) translateX(-1.4%)
 }

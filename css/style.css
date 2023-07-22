@@ -17,7 +17,17 @@
     height: 100vh;
     overflow: hidden;
 }
-
+.deco-gradient{
+    position: absolute;
+    top : -4%;
+    left : -0.8%;
+    width : 70px;
+    height: 70px;
+    background: var(--primary);
+    border-radius: 50%;
+    filter: blur(8px);
+    opacity: .4;
+}
 #header-nav{
     display: flex;
     position: absolute;
@@ -53,11 +63,11 @@
     position: absolute;
     left : -10px;
     top : -5px;
-    width : 12px;
+    width : 8px;
     height: 8px;
-    border-top: 4px solid var(--text);
-    transform: rotate(-45deg);
-    border-radius: 7px;
+    border-top: 3px solid var(--text);
+    border-left: 3px solid var(--text);
+    border-radius: 4px;
 }
 #header-nav .menus .options a.active{
     color : var(--text);
@@ -80,7 +90,7 @@
     border-radius: 20px;
 }
 #header-nav .menus .log a:nth-child(1){
-    border: 1px solid var(--primary);
+    border: 2px solid var(--primary);
     color : var(--primary)
 }
 #header-nav .menus .log a:nth-child(2){
