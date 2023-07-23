@@ -6,35 +6,32 @@ class scrollDown{
         this.width = this.firstChild.clientWidth;
         this.height = this.firstChild.clientHeight + 0.5;
         this.change = false
+        this.#setDefaultHeight()
     }
 
     getHeight(){
         return this.height;
     }
-    setDefaultHeight(){
-        this.elem.style.height = this.getHeight()+"px";
-        this.elem.style.width = this.width + 15+"px"
+    #setDefaultHeight(){
+        this.elem.style.height = "18px";
+        this.elem.style.width = "220px"
     }
-    setHider(){
-        this.elem.style.width = this.width+15+"px";
-        this.elem.style.height = this.height+"px";
-    }
-    setvisible(){
-        this.elem.style.height = this.elem_height+"px";
+    
+    #setvisible(){
+        this.elem.style.height = 18*5+"px";
     }
     
     controlEvent(){
         this.firstChild.addEventListener("click", ()=>{
             console.log(this.change)
-            if (this.change) this.setHider();
-            else this.setvisible();
+            if (this.change) this.#setDefaultHeight();
+            else this.#setvisible();
             this.change = (this.change) ? false : true
         })
     }
 }
 
 const scrool = new scrollDown(document.querySelector('.menu'))
-scrool.setDefaultHeight()
 scrool.controlEvent()
 
 //control menu bars

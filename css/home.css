@@ -5,6 +5,7 @@
     height: 100vh;
 }
 #home .text{
+    position: relative;
     display: flex;
     flex-direction: column;
     gap : 40px;
@@ -12,24 +13,42 @@
     justify-content: center;
     padding-left: 12%;
 }
-
+#home .text .img-deco{
+    position: absolute;
+    width: 150px;
+    left : -5px;
+    bottom : 10%;
+    z-index: 6;
+}
+#home .text .feuille{
+    position: absolute;
+    transform: rotate(120deg);
+    left : -4%;
+    bottom: -5%;
+    width: 100px;
+    z-index: 6;
+}
 #home .text .descript h1{
     font-size: 3em;
     text-transform: capitalize;
+    animation: enterText 2s;
 }
 #home .text .descript h2{
     text-transform: capitalize;
     font-size: 2.5em;
     font-weight: lighter;
+    animation: enterText 2s;
+
 }
 #home .text .descript .desc{
     display: inline-block;
     margin-top : 20px;
     overflow-wrap: break-word;
-    width: 30%;
+    width: 50%;
 }
 #home .text .descript p{
-    color : var(--text2)
+    color : var(--text2);
+    animation: enterText 2.8s;
 }
 #home .text .descript p strong{
     color : var(--text)
@@ -47,24 +66,295 @@
 
 #home .text .price-contain .buy-now a{
     display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: .9em;
     text-decoration: none;
     text-transform: capitalize;
-    padding: 10px 27px;
+    padding: 7px 30px 7px 8px;
     color : var(--text-active);
     background: var(--text);
+    box-shadow: 0 10px 15px rgba(0,0,0,.1);
     border-radius: 20px;
 }
+#home .text .price-contain .buy-now a img{
+    margin-right: 15px;
+    padding : 5px;
+    width : 25px;
+    height: 25px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+#home .text .chef-info{
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    align-items: start;
+    left : 10%;
+    bottom: 10%;
+    width : 100%;
+    height : 70px;
+    border-radius: 20px;
+    /* background: red; */
+}
+#home .text .chef-info .desc-chef{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap : 15px;
+}
+#home .text .chef-info .desc-chef .desc p{
+    font-size: .9em;
+}
+#home .text .chef-info .desc-chef .desc p:nth-child(2){
+    font-weight: bold;
+}
+#home .text .chef-info .desc-chef .images{
+    margin : 10px;
+    width : 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-left: 4px dashed var(--primary);
+    /* background: green; */
+}
+#home .text .chef-info .desc-chef .images img{
+    margin : 8% 17%;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+#home .text .chef-info .scroll-down{
+    transform: rotate(90deg);
+}
+#home .text .chef-info .scroll-down a{
+    display: inline-block;
+    text-decoration: none;
+    color : #fff;
+}
+#home .text .chef-info .scroll-down a img{
+    transform: rotate(-90deg);
+    animation: downAimate 1s linear infinite;
+}
+/* fin de la propriete attribut a tout ceux qui qppqrteint dans text  */
 
 #home .images{
     position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding : 0 4% 3% 0;
     width : 50%;
 }
-#home .images .deco{
+#home .deco{
     position: absolute;
+    right: -40%;
     width: 72vw;
     height: 142vh;
     border-radius: 100px;
     background: var(--card-bg);
-    transform: rotate(45deg) translateY(10%) translateX(-1.4%)
+    transform: rotate(45deg) translateY(10%) translateX(-1.4%);
+    z-index: -1;
+}
+
+#home .images img{
+    position: absolute;
+    top : 40%;
+    left : 35%;
+    transform-origin: center;
+    transform: translate(-50%,-50%);
+    width : 70%;
+    transition: .4s;
+    animation: popPlat 1.6s;
+}
+#home .images img:hover{
+    transform: translate(-50%,-50%) rotate(10deg) scale(1.1);
+}
+
+/* commencement de la partie gestion des slides  */
+#home .info-contain{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width : 80%;
+    height: 170px;
+    border: 1.4px dashed #fff;
+    border-radius: 10px;
+    animation: popInfo;
+    z-index: 5;
+}
+#home .info-contain .controls{
+    display: flex;
+    height: 20%;
+    padding: 0 4%;
+    justify-content: space-between;
+    align-items: center;
+}
+#home .info-contain .controls p{
+    font-size: .85em;
+    color : #fff;
+}
+#home .info-contain .controls .control a{
+    font-size: .8em;
+    text-decoration: none;
+    margin: 0 5px;
+    color : #fff;
+}
+#home .info-contain .controls .control a i{
+    margin: 0 3px;
+}
+#home .info-contain .val-contain{
+    height: 70%;
+    border-top: 1.4px dashed #fff;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+#home .info-contain .val-contain .slide{
+    display: flex;
+    width : 100%;
+    height: 100%;
+    transition: .4s;
+}
+#home .info-contain .val-contain .slide .val{
+    flex-shrink: 0;
+    display: flex;
+    gap : 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    width: 100%;
+    height: 114%;
+}
+#home .info-contain .val-contain .val .pizza{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: url("../images/pizza1.png");
+    background-size: contain;
+    border-radius: 50%;
+}
+
+#home .info-contain .val-contain .val .desc-pizza{
+    display: flex;
+    flex-direction: column;
+    gap : 15px;
+    color : #fff;
+}
+#home .info-contain .val-contain .val .desc-pizza p{
+    font-size: .8em;
+}
+#home .info-contain .val-contain .val .price-pizza p{
+    font-size: .8em;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+    color: var(--primary)
+}
+#home .info-contain .val-contain .val .price-pizza h2{
+    font-weight: 100;
+    color :#fff;
+}
+#home .info-contain .val-contain .val .date{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+    margin-left: 7%;
+    padding: 6px 12px 6px 25px;
+    background: var(--primary);
+    color : var(--text);
+    border-radius : 20px;
+}
+#home .info-contain .val-contain .val .date img{
+    position: absolute;
+    left : 6px;
+    top : 50%;
+    transform: translate(0,-50%); 
+    width : 17px;
+}
+
+/* parte gestion de responsivite  */
+
+@media (max-width : 850px){
+    #home{
+        flex-direction: column;
+        height: auto;
+    }
+    #home .text{
+        width : 80%;
+        height: 100vh;
+    }
+    #home .text .descript .desc{
+        width : 90%
+    }
+    #home .text .descript h1{
+        font-size: 2.4em;
+    }
+    #home .text .descript h2{
+        font-size: 1.8em;
+    }
+    #home .images{
+        width: 100%;
+        height: 80vh;
+        padding: 2.1% 2%;
+    }
+    #home .info-contain{
+        width: 100%;
+    }
+    #home .info-contain, #home .info-contain .val-contain{
+        border-color: #000;
+    }
+    #home .info-contain .controls p, #home .info-contain .controls .control a, #home .info-contain .val-contain .val .desc-pizza, #home .info-contain .val-contain .val .price-pizza h2{
+        color : #000;
+    }
+    #home .info-contain .val-contain .val .pizza{
+        width : 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width : 450px){
+    #home .text .chef-info .desc-chef .desc p{
+        color : #fff;
+    }
+}
+
+@keyframes downAimate {
+    from{
+        opacity: 0;
+    }
+    to{
+        transform: translateX(40px) rotate(-90deg);
+    }
+}
+
+@keyframes popPlat {
+    from{
+        transform: scale(.6) rotateZ(45deg) translate(-50%,-50%);
+    }
+    to{
+        transform: scale(1) rotateZ(0) translate(-50%,-50%)
+    }
+}
+
+@keyframes enterText {
+    from{
+        transform: translateX(-30%); opacity: .2;
+    }
+    to{
+        transform: translateX(0); opacity: 1;
+    }
+}
+
+@keyframes popInfo {
+    from{
+        transform: scale(.6);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
 }

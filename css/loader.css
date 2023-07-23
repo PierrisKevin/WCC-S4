@@ -1,0 +1,28 @@
+#loader{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width : 100%;
+    height: 100vh;
+    background: #131313;
+    z-index: 10;
+}
+#loader .animation-contain{
+    width : 15vw;
+    min-width: 200px;
+    height: 15vw;
+    min-height: 200px;
+}
+#loader .animation-contain lottie-player{
+    width : 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#loader h1{
+    display: none;
+    font-weight: lighter;
+    margin-top: -50px;
+    color : #35322c;
+}

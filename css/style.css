@@ -6,15 +6,26 @@
     --text2 : #97978c;
     --text-active : #fff;
 }
+@font-face {
+    font-family: 'carrosB';
+    src: url("./carrosB.otf");
+}
+@font-face {
+    font-family: "carrosM";
+    src: url("./carrosM.otf");
+}
 *,body{
     margin : 0;
     padding : 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "carrosM",sans-serif;
+}
+body{
+    width : 100%;
 }
 #all-contain{
-    width : 100%;
-    height: 100vh;
+    width : 100vw;
+    /* height: auto; */
     overflow: hidden;
 }
 .deco-gradient{
@@ -39,6 +50,7 @@
 #header-nav .logo{
     font-size: 2em;
     font-weight: bold;
+    font-family: "carrosB";
 }
 #header-nav .menus{
     display: flex;
@@ -58,13 +70,20 @@
     color : var(--text2);
     transition: .4s;
 }
-#header-nav .menus .options a.active::before{
+#header-nav .menus .options a:hover{
+    color : var(--text)
+}
+#header-nav .menus .options a::before{
     content : "";
     position: absolute;
     left : -10px;
     top : -5px;
     width : 8px;
     height: 8px;
+    transition: .4s;
+}
+#header-nav .menus .options a.active::before, #header-nav .menus .options a:hover::before{
+
     border-top: 3px solid var(--text);
     border-left: 3px solid var(--text);
     border-radius: 4px;
@@ -90,8 +109,10 @@
     border-radius: 20px;
 }
 #header-nav .menus .log a:nth-child(1){
-    border: 2px solid var(--primary);
-    color : var(--primary)
+    background: #121212;
+    border: 2px solid #fff;
+    color : #fff;
+    mix-blend-mode: difference;
 }
 #header-nav .menus .log a:nth-child(2){
     margin-left: 10px;
@@ -128,6 +149,7 @@
 
 @media (max-width : 850px){
     #header-nav .menus{
+        display: none;
         position: absolute;
         flex-direction: column;
         justify-content: center;
@@ -138,18 +160,23 @@
         height: 100vh;
         width: 45%;
         border-radius: 50%;
-        overflow: hidden;
+
         transition: .4s;
         transform: translateX(100%);
         background: var(--text);
     }
     #header-nav .menus.active{
+        display: flex;
         border-radius: 0;
         transform: translateX(0);
+        animation: enterNav .6s;
     }
     #header-nav .menus .options{
         flex-direction: column;
         gap : 35px;
+    }
+    #header-nav .menus .options a:hover{
+        color : #fff;
     }
     #header-nav .menus .options .menu{
         transition: .3s;
@@ -167,3 +194,13 @@
         width: 85%;
     }
 }
+
+
+/* partie animatio d'entre du navBar  */
+@keyframes enterNav{
+    from{
+        transform: translateX(100%);
+        border-radius: 50%;
+    }
+}
+
